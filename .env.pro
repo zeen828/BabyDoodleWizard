@@ -1,0 +1,5 @@
+NODE_ENV=envprolocal
+VUE_APP_SECRET=envprolocal
+
+VUE_APP_LANGUAGE=zh-TW
+VUE_APP_TIMEZONE=Asia/Taipei

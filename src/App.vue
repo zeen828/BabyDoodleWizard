@@ -1,12 +1,45 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <HtmlHeader msg="我是Header"/>
     <router-view/>
+    <HtmlFooter msg="我是Footer"/>
   </div>
 </template>
+
+<script>
+import HtmlHeader from '@/components/html/Header.vue'
+import HtmlFooter from '@/components/html/Footer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HtmlHeader,
+    HtmlFooter
+  },
+  computed: {},
+  methods: {
+    ready () {
+      console.log('app.vue > ready')
+    }
+  },
+  data () {
+    return {}
+  },
+  beforeCreate () {},
+  created () {},
+  beforeMount () {},
+  mounted () {
+    // console.log('App.vue > mounted ()')
+    // console.log('查看vuex:', this.$store)
+    // console.log('查看環境設定檔:', process.env)
+    this.ready()
+  },
+  beforeUpdate () {},
+  updated () {},
+  beforeDestroy () {},
+  destroyed () {}
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -15,18 +48,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

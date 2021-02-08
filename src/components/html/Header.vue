@@ -1,9 +1,11 @@
 <template>
   <header class="header">
     <h1>{{ msg }}</h1>
-    <md-menu md-size="small" v-for="(val, index) in list" :key="index">
-      <md-button md-menu-trigger :to="val.path">{{$t(val.title)}}</md-button>
-    </md-menu>
+    <ul class="nav" v-for="(val, index) in list" :key="index">
+      <li class="nav-item">
+        <router-link :to="val.path">{{$t(val.title)}}</router-link>
+      </li>
+    </ul>
   </header>
 </template>
 
@@ -17,10 +19,8 @@ export default {
       default: function () {
         return [
           { title: 'menu.home', path: '/' },
-          { title: 'menu.fintech', path: '/fintech/user/login' },
-          { title: 'menu.bet', path: '/bet/user/login' },
-          { title: 'bet.menu.gamelist', path: '/bet/game/list' },
-          { title: 'test', path: '/bet/game' }
+          { title: 'menu.game', path: '/game' },
+          { title: 'test', path: '/' }
         ]
       }
     }

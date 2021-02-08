@@ -1,3 +1,10 @@
 {
+    "menu": {
+        "home": "Home",
+        "game": "Game"
+    },
+    "page": {
+        "index": "This is an {name} page."
+    },
     "test": "Test"
 }

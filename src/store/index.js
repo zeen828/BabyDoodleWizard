@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 // module
 import Elves from './modules/elves'
 import Capture from './modules/capture'
+import Props from './modules/props'
 import Event from './modules/event'
 
 Vue.use(Vuex)
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     debug: false
   },
   // 用來註冊改變資料狀態
+  // this.$store.commit('mutations function name')
   mutations: {
     setLang (state, val) {
       state.lang = val
@@ -33,6 +35,8 @@ export default new Vuex.Store({
     }
   },
   // 解決非同步改變共享資料
+  // 建議透過這這邊執行邏輯運算後呼叫mutations
+  // this.$store.dispatch('actions function name')
   actions: {
     ready: function ({ commit, dispatch, rootState, state }) {
       console.log('Vues.store.action.ready')
@@ -42,6 +46,7 @@ export default new Vuex.Store({
   modules: {
     Elves,
     Capture,
+    Props,
     Event
   }
 })

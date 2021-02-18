@@ -2,13 +2,16 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// bootstrap
+import 'bootstrap'
+import 'jquery/src/jquery.js'
+import 'popper.js/dist/popper.min.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 // i18n - 多國語系
 import VueI18n from 'vue-i18n'// 引入 Vue I18n
 import zh from './i18n/zh'// 存放中文語系檔
 import en from './i18n/en'// 存放英文語系檔
-// bootstrap
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 // i18n
 Vue.use(VueI18n)

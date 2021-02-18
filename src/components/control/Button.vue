@@ -1,31 +1,27 @@
 <template>
-  <div>
-    <div class="button md-layout md-gutter">
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item"><md-avatar class="md-avatar-icon">上</md-avatar></div>
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item"></div>
-    </div>
-    <div class="button md-layout md-gutter">
-      <div class="md-layout-item">
-        <md-avatar class="md-avatar-icon md-primary">Z</md-avatar>
+  <div class="button">
+    <div class="d-flex flex-column">
+      <div class="d-flex justify-content-center">
+        <div class=""></div>
+        <div class=""></div>
+        <div class="bt alert-warning">{{$t('button.top')}}</div>
+        <div class=""></div>
+        <div class=""></div>
       </div>
-      <div class="md-layout-item"><md-avatar class="md-avatar-icon">左</md-avatar></div>
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item"><md-avatar class="md-avatar-icon">右</md-avatar></div>
-      <div class="md-layout-item">
-        <md-avatar class="md-avatar-icon md-accent">M</md-avatar>
+      <div class="d-flex justify-content-center">
+        <div class="bt alert-danger">{{$t('button.z')}}</div>
+        <div class="bt alert-warning">{{$t('button.left')}}</div>
+        <div class="bt"></div>
+        <div class="bt alert-warning">{{$t('button.right')}}</div>
+        <div class="bt alert-primary">{{$t('button.m')}}</div>
       </div>
-    </div>
-    <div class="button md-layout md-gutter">
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item">
-        <md-avatar class="md-avatar-icon">下</md-avatar>
+      <div class="d-flex justify-content-center">
+        <div class=""></div>
+        <div class=""></div>
+        <div class="bt alert-warning">{{$t('button.bottom')}}</div>
+        <div class=""></div>
+        <div class=""></div>
       </div>
-      <div class="md-layout-item"></div>
-      <div class="md-layout-item"></div>
     </div>
   </div>
 </template>
@@ -39,7 +35,7 @@ export default {
     },
     previous: function (e) {
       // check key code
-      console.log(e)
+      // console.log(e)
       switch (e.key) {
         case 'ArrowUp':
           console.log('上')
@@ -55,11 +51,11 @@ export default {
           break
         case 'z':
         case 'Z':
-          console.log('zZ')
+          console.log('紅')
           break
         case 'm':
         case 'M':
-          console.log('mM')
+          console.log('藍')
           break
         default:
           break
@@ -98,3 +94,12 @@ export default {
   destroyed () {}
 }
 </script>
+
+<style lang="scss">
+.bt {
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  border-radius: 50%;
+}
+</style>

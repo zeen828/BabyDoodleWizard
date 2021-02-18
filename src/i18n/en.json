@@ -3,6 +3,14 @@
         "home": "Home",
         "game": "Game"
     },
+    "button": {
+        "top": "▲",
+        "bottom": "▼",
+        "left": "◄",
+        "right": "►",
+        "z": "Z",
+        "m": "M"
+    },
     "page": {
         "index": "This is an {name} page."
     },

@@ -1,13 +1,15 @@
 /**
- * 精靈
+ * 應用道具
  **/
 export default {
   namespaced: true,
   // 用來資料共享資料儲存
   state: {
     data: [
-      // 名稱, 攻擊, 防禦, 速度, 屬性, 稀有度, 捕獲機率
-      { name: '閃電屬', attack: '2400', defense: '2400', speed: '98', attrib: ['老鼠', '金'], rarity: '', ratio: 0.5 }
+      { name: '命中提升' },
+      { name: '攻擊提升' },
+      { name: '防禦提升' },
+      { name: '捕獲道具' }
     ],
     debug: false
   },

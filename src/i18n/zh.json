@@ -3,6 +3,14 @@
         "home": "首頁",
         "game": "遊戲"
     },
+    "button": {
+        "top": "上",
+        "bottom": "下",
+        "left": "左",
+        "right": "右",
+        "z": "Z",
+        "m": "M"
+    },
     "page": {
         "index": "這是{name}頁面."
     },

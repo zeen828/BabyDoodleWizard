@@ -13,6 +13,14 @@ export default new Vuex.Store({
   // 用來資料共享資料儲存
   state: {
     lang: null,
+    button: {
+      Up: false,
+      Down: false,
+      Left: false,
+      Right: false,
+      Z: false,
+      M: false
+    },
     debug: false
   },
   // 用來註冊改變資料狀態
@@ -20,6 +28,24 @@ export default new Vuex.Store({
   mutations: {
     setLang (state, val) {
       state.lang = val
+    },
+    setUp (state, val) {
+      state.button.Up = val
+    },
+    setDown (state, val) {
+      state.button.Down = val
+    },
+    setLeft (state, val) {
+      state.button.Left = val
+    },
+    setRight (state, val) {
+      state.button.Right = val
+    },
+    setZ (state, val) {
+      state.button.Z = val
+    },
+    setM (state, val) {
+      state.button.M = val
     },
     setDebug (state, val) {
       state.debug = val
@@ -29,6 +55,24 @@ export default new Vuex.Store({
   getters: {
     getLang (state) {
       return state.lang
+    },
+    getUp (state) {
+      return state.button.Up
+    },
+    getDown (state) {
+      return state.button.Down
+    },
+    getLeft (state) {
+      return state.button.Left
+    },
+    getRight (state) {
+      return state.button.Right
+    },
+    getZ (state) {
+      return state.button.Z
+    },
+    getM (state) {
+      return state.button.M
     },
     getDebug (state) {
       return state.debug

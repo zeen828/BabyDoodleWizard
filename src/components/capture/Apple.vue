@@ -1,5 +1,5 @@
 <template>
-  <canvas id="canvasApple" ref="canvas" class="bg-info" width="400" height="400">蘋果</canvas>
+  <canvas id="canvasApple" class="canvas" ref="canvas" :width="width" :height="height">蘋果</canvas>
 </template>
 
 <script>
@@ -7,52 +7,60 @@ export default {
   name: 'Apple',
   methods: {
     ready () {
-      // 畫蘋果
+      // 畫布宣告
       this.initCanvas()
+      // 蘋果
       // this.setApple()
-      setInterval(this.drawCanvas, 32)
+      // setInterval(this.setApple, 32)
     },
     initCanvas () {
+      // 定位目標DOM
       this.canvas = document.getElementById('canvasApple')
-      this.context = this.canvas.getContext('2d')
+      // 渲染
+      if (this.canvas.getContext) {
+        this.context = this.canvas.getContext('2d')
+      } else {
+        console.log('瀏覽器不支援畫布(canvas)')
+        alert('瀏覽器不支援畫布(canvas)')
+      }
     },
     setApple () {
-      this.context.fillStyle = 'red'
-      this.context.beginPath()
-      this.context.arc(30, 30, 20, 0, Math.PI * 2)
-      this.context.fill()
-      this.context.closePath()
-      this.context.beginPath()
-      this.context.rotate(20 * Math.PI / 180)
-      this.context.arc(40, 10, 8, 0, Math.PI)
-      this.context.strokeStyle = '#000000'
-      this.context.stroke()
-    },
-    drawCanvas () {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+      // 紅
+      this.context.fillStyle = 'rgb(200, 0, 0)'
       this.context.beginPath()
-      this.context.arc(this.x, this.y, 12, 0, Math.PI * 2, true)
+      this.context.arc(this.x, this.y, 25, 0, Math.PI * 2, true)
+      // this.context.arc(60, 60, 25, 0, Math.PI * 2, true)
       this.context.closePath()
       this.context.fill()
-      this.x += 6
-      if (this.x > 560) this.x = 10
+      // 葉子
+      this.context.fillStyle = 'rgb(0, 200, 0)'
+      this.context.beginPath()
+      this.context.moveTo(this.x + 10, this.y - 15)
+      // this.context.moveTo(70, 45)
+      this.context.arc(this.x + 20, this.y - 35, 20, 0, 1.2, false)
+      // this.context.arc(80, 25, 20, 0, 1.2, false)
+      this.context.closePath()
+      this.context.fill()
+      if (this.y > 60) {
+        this.y -= 10
+        if (this.y < 0) this.y = this.height
+      } else {
+        console.log(this.y)
+      }
     }
   },
   data () {
     return {
       // 運作狀態
       isRunning: false,
-      // canvasSize: {
-      //   width: window.screen.availWidth * 0.8,
-      //   height: window.screen.availHeight * 0.75
-      // },
+      width: 600,
+      height: 600,
       // 畫布
       canvas: this.$refs.canvas,
-      // canvasTop: null,
-      // canvasLeft: null,
       context: null,
-      x: 30,
-      y: 30,
+      x: 60,
+      y: 600,
       config: {}
     }
   },

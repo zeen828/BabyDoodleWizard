@@ -1,5 +1,5 @@
 <template>
-  <canvas :id="'canvasRacingCar' + no" class="canvasRacingCar canvas" ref="canvas" :width="width" :height="height">汽車</canvas>
+  <canvas :id="'canvasRacingCar' + no" class="canvasRacingCar canvas" ref="canvas" :width="widthXp" :height="heightXp">汽車</canvas>
 </template>
 
 <script>
@@ -14,7 +14,8 @@ export default {
       this.y = this.no * 40 + 10 - 40
       if (this.width !== 0) {
         // 型態轉換100px=>100，寬是取100px有單位
-        this.x = parseInt(this.width.replace('xp', ''))
+        // this.x = parseInt(this.width.replace('xp', ''))
+        this.x = this.width
         this.carLoop = setInterval(this.drawing, this.speed)
       }
     },
@@ -79,13 +80,41 @@ export default {
     // 車號
     'no',
     // 速度
-    'speed',
+    // 'speed',
     // 顏色
-    'colour',
-    'width',
-    'height'
+    'colour'
+    // 'width',
+    // 'height'
   ],
   computed: {
+    widthXp: {
+      get () {
+        return this.$store.getters['Racing/getWidthPx']
+      }
+    },
+    heightXp: {
+      get () {
+        return this.$store.getters['Racing/getHeightPx']
+      }
+    },
+    width: {
+      get () {
+        return this.$store.getters['Racing/getWidth']
+      }
+    },
+    height: {
+      get () {
+        return this.$store.getters['Racing/getHeight']
+      }
+    },
+    speed: {
+      get () {
+        return this.$store.getters['Racing/getSpeed']
+      },
+      set (val) {
+        this.$store.commit('Racing/setSpeed', val)
+      }
+    },
     stop: {
       get () {
         return this.$store.getters['Racing/getStop']
@@ -122,12 +151,10 @@ export default {
   },
   beforeMount () {},
   mounted () {
-    this.ready()
+    // this.ready()
   },
   beforeUpdate () {},
   updated () {
-    console.log('汽車區更新')
-    console.log('汽車區', this.no, this.speed, this.colour, this.width, this.height)
     this.ready()
   },
   beforeDestroy () {},

@@ -5,6 +5,14 @@ export default {
   namespaced: true,
   // 用來資料共享資料儲存
   state: {
+    // 寬(像數)
+    widthPx: '0px',
+    // 高(像數)
+    heightPx: '0px',
+    // 寬
+    width: 0,
+    // 高
+    height: 0,
     // 速度
     speed: 30,
     // 距離
@@ -16,6 +24,18 @@ export default {
   // 用來註冊改變資料狀態
   // this.$store.commit('mutations function name')
   mutations: {
+    setWidthPx (state, val) {
+      state.widthPx = val
+    },
+    setHeightPx (state, val) {
+      state.heightPx = val
+    },
+    setWidth (state, val) {
+      state.width = val
+    },
+    setHeight (state, val) {
+      state.height = val
+    },
     setSpeed (state, val) {
       state.speed = val
     },
@@ -31,6 +51,18 @@ export default {
   },
   // 用來對共享資料進行過濾操作
   getters: {
+    getWidthPx (state) {
+      return state.widthPx
+    },
+    getHeightPx (state) {
+      return state.heightPx
+    },
+    getWidth (state) {
+      return state.width
+    },
+    getHeight (state) {
+      return state.height
+    },
     getSpeed (state) {
       return state.speed
     },
@@ -50,6 +82,15 @@ export default {
   actions: {
     ready (context) {
       console.log('Vues.store.model.action.ready')
+    },
+    // 設定畫布
+    setCanvas (context, { width, height }) {
+      // 紀錄畫布寬高
+      context.commit('setWidthPx', width)
+      context.commit('setHeightPx', height)
+      // 寬高轉換成數值，xp去掉改型態
+      context.commit('setWidth', parseInt(width.replace('xp', '')))
+      context.commit('setHeight', parseInt(height.replace('xp', '')))
     }
   }
 }

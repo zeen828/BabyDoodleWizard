@@ -30,6 +30,12 @@ export default {
       // 擷取舞台的大小
       this.width = window.getComputedStyle(this.$refs.stage).width
       this.height = window.getComputedStyle(this.$refs.stage).height
+      // 設定畫布
+      const formData = {
+        width: this.width,
+        height: this.height
+      }
+      this.$store.dispatch('Racing/setCanvas', formData)
       console.log('北京賽車', this.width, this.height)
     }
   },

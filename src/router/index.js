@@ -20,9 +20,9 @@ const routes = [
     component: () => import('../views/Game.vue')
   },
   {
-    path: '/car',
+    path: '/racing/car',
     name: 'Car',
-    component: () => import('../views/Car.vue')
+    component: () => import('../views/racing/Car.vue')
   }
 ]
 

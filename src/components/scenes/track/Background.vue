@@ -30,7 +30,6 @@ export default {
       this.context.fillStyle = 'rgb(0, 0, 0)'
       // 設定一個填滿顏色的矩形(原點出發X橫向位置,原點出發Y垂直位置,寬,高)
       this.context.fillRect(0, 0, this.width, this.height)
-
       // 白虛線(迴圈9條)
       const h = this.height / 10
       this.context.setLineDash([30, 5])

@@ -9,6 +9,8 @@ export default {
     speed: 30,
     // 距離
     distance: 10000,
+    // 停止
+    stop: false,
     debug: false
   },
   // 用來註冊改變資料狀態
@@ -19,6 +21,9 @@ export default {
     },
     setDistance (state, val) {
       state.distance = val
+    },
+    setStop (state, val) {
+      state.stop = val
     },
     setDebug (state, val) {
       state.debug = val
@@ -31,6 +36,9 @@ export default {
     },
     getDistance (state) {
       return state.distance
+    },
+    getStop (state) {
+      return state.stop
     },
     getDebug (state) {
       return state.debug

@@ -71,6 +71,7 @@ export default {
         console.log(this.x)
         // 停止迴圈
         clearInterval(this.carLoop)
+        // this.stop = true
       }
     }
   },
@@ -84,6 +85,23 @@ export default {
     'width',
     'height'
   ],
+  computed: {
+    stop: {
+      get () {
+        return this.$store.getters['Racing/getStop']
+      },
+      set (val) {
+        this.$store.commit('Racing/setStop', val)
+      }
+    }
+  },
+  watch: {
+    stop (newVal, oldVal) {
+      if (newVal === true) {
+        clearInterval(this.carLoop)
+      }
+    }
+  },
   data () {
     return {
       // 運作狀態

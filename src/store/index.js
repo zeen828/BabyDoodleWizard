@@ -6,6 +6,7 @@ import Elves from './modules/elves'
 import Capture from './modules/capture'
 import Props from './modules/props'
 import Event from './modules/event'
+import Racing from './modules/racing'
 
 Vue.use(Vuex)
 
@@ -91,6 +92,7 @@ export default new Vuex.Store({
     Elves,
     Capture,
     Props,
-    Event
+    Event,
+    Racing
   }
 })

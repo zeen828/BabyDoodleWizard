@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Background from '@/components/scenes/car/Background.vue'
+import Background from '@/components/scenes/track/Background.vue'
 export default {
   name: 'scenesMenu',
   components: {
@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     ready () {
-      console.log('場景-北京賽車')
+      console.log('場景-賽道')
     }
   },
   data () {

@@ -1,9 +1,14 @@
 <template>
+  <Background/>
 </template>
 
 <script>
+import Background from '@/components/scenes/menu/Background.vue'
 export default {
   name: 'scenesActivity',
+  components: {
+    Background
+  },
   methods: {
     ready () {
       console.log('場景-活動對戰')

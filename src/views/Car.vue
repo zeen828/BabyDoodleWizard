@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ScenesCar from '@/components/scenes/car/Index.vue'
+import ScenesCar from '@/components/scenes/track/Index.vue'
 export default {
   name: 'Car',
   components: {
@@ -48,7 +48,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-#scenesCarBackground {
+#scenesTrackBackground {
   // background-color: #058;
   top: 0;
   left: 0;

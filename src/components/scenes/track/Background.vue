@@ -1,10 +1,10 @@
 <template>
-    <canvas id="scenesCarBackground" class="canvas" ref="canvas" :width="width" :height="height">蘋果</canvas>
+    <canvas id="scenesTrackBackground" class="canvas" ref="canvas" :width="width" :height="height">蘋果</canvas>
 </template>
 
 <script>
 export default {
-  name: 'scenesCarBackground',
+  name: 'scenesTrackBackground',
   methods: {
     ready () {
       // 畫布宣告
@@ -15,7 +15,7 @@ export default {
     // 畫布宣告
     initCanvas () {
       // 定位目標DOM
-      this.canvas = document.getElementById('scenesCarBackground')
+      this.canvas = document.getElementById('scenesTrackBackground')
       // 渲染
       if (this.canvas.getContext) {
         this.context = this.canvas.getContext('2d')
@@ -31,7 +31,7 @@ export default {
       // 設定一個填滿顏色的矩形(原點出發X橫向位置,原點出發Y垂直位置,寬,高)
       this.context.fillRect(0, 0, this.width, this.height)
 
-      // 白虛線
+      // 白虛線(迴圈9條)
       const h = this.height / 10
       this.context.setLineDash([30, 5])
       for (let i = 1; i < 10; i++) {

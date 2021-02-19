@@ -42,6 +42,7 @@ export default {
   width: 600px;
   height: 600px;
   border: 1px solid black;
+  margin:0px auto;
 }
 .canvas {
   width: 100%;

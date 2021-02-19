@@ -1,9 +1,14 @@
 <template>
+  <Background/>
 </template>
 
 <script>
+import Background from '@/components/scenes/menu/Background.vue'
 export default {
   name: 'scenesCapture',
+  components: {
+    Background
+  },
   methods: {
     ready () {
       console.log('場景-立即捕獲')

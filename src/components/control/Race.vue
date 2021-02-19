@@ -9,9 +9,11 @@ export default {
     ready () {
       // 畫布宣告
       this.initCanvas()
-      // this.setRaceA()
-      // this.setRaceB()
+      // 繪圖
+      this.drawing()
+      // setInterval(this.drawing, 32)
     },
+    // 畫布宣告
     initCanvas () {
       // 定位目標DOM
       this.canvas = document.getElementById('canvasRace')
@@ -23,9 +25,10 @@ export default {
         alert('瀏覽器不支援畫布(canvas)')
       }
     },
-    setRaceA () {
+    // 繪圖-中線
+    drawing () {
       const x = this.width / 6
-      const y = (this.height / 2) - 30
+      let y = (this.height / 2) - 30
       const y1 = 30
       const y2 = 60
       // 填充顏色
@@ -48,12 +51,8 @@ export default {
       this.context.lineTo(0, y + y1)
       this.context.closePath()
       this.context.fill()
-    },
-    setRaceB () {
-      const x = this.width / 6
-      const y = (this.height / 2)
-      const y1 = 30
-      const y2 = 60
+
+      y = (this.height / 2)
       // 填充顏色
       this.context.fillStyle = 'rgb(0, 150, 200)'
       // 橘線

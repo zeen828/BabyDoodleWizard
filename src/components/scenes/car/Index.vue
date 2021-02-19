@@ -1,0 +1,34 @@
+<template>
+  <Background/>
+</template>
+
+<script>
+import Background from '@/components/scenes/car/Background.vue'
+export default {
+  name: 'scenesMenu',
+  components: {
+    Background
+  },
+  methods: {
+    ready () {
+      console.log('場景-北京賽車')
+    }
+  },
+  data () {
+    return {
+      config: {}
+    }
+  },
+  beforeCreate () {},
+  created () {
+  },
+  beforeMount () {},
+  mounted () {
+    this.ready()
+  },
+  beforeUpdate () {},
+  updated () {},
+  beforeDestroy () {},
+  destroyed () {}
+}
+</script>

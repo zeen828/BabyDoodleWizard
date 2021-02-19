@@ -27,7 +27,9 @@ export default {
       default: function () {
         return [
           { title: 'menu.home', path: '/' },
+          { title: 'menu.menu', path: '/menu' },
           { title: 'menu.game', path: '/game' },
+          { title: 'menu.car', path: '/car' },
           { title: 'test', path: '/' }
         ]
       }

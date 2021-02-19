@@ -1,7 +1,9 @@
 {
     "menu": {
         "home": "Home",
-        "game": "Game"
+        "menu": "menu",
+        "game": "Game",
+        "car": "Racing Car"
     },
     "button": {
         "top": "▲",

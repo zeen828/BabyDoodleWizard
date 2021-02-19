@@ -9,10 +9,11 @@ export default {
     ready () {
       // 畫布宣告
       this.initCanvas()
-      // 蘋果
-      this.setBall()
-      // setInterval(this.setApple, 32)
+      // 繪圖
+      this.drawing()
+      // setInterval(this.drawing, 32)
     },
+    // 畫布宣告
     initCanvas () {
       // 定位目標DOM
       this.canvas = document.getElementById('canvasBall')
@@ -24,7 +25,8 @@ export default {
         alert('瀏覽器不支援畫布(canvas)')
       }
     },
-    setBall () {
+    // 繪圖-精靈球
+    drawing () {
       // 畫一個下半圓，指定顏色為白色
       this.context.beginPath()
       this.context.lineWidth = 3

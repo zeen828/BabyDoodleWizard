@@ -9,10 +9,11 @@ export default {
     ready () {
       // 畫布宣告
       this.initCanvas()
-      // 蘋果
-      // this.setMonkey()
-      // setInterval(this.setMonkey, 32)
+      // 繪圖
+      this.drawing()
+      // setInterval(this.drawing, 32)
     },
+    // 畫布宣告
     initCanvas () {
       // 定位目標DOM
       this.canvas = document.getElementById('elvesMonkey')
@@ -24,7 +25,8 @@ export default {
         alert('瀏覽器不支援畫布(canvas)')
       }
     },
-    setMonkey () {
+    // 繪圖-猴子
+    drawing () {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
       // 填充顏色
       this.context.fillStyle = 'rgb(200, 200, 0)'

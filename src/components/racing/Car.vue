@@ -33,6 +33,8 @@ export default {
     },
     // 繪圖-車子
     drawing () {
+      // 倍數
+      // const enlarge = 1
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
       // 車體
       // this.context.fillStyle = 'rgb(200, 150, 0)'
@@ -65,14 +67,14 @@ export default {
       // 車號
       this.context.font = '12px serif'
       this.context.strokeText(this.no, this.x + 40, this.y + 15)
+      // 移動
       if (this.x > 10) {
         this.x -= 10
-        // if (this.x < 10) this.x = 10
       } else {
         console.log(this.x)
         // 停止迴圈
         clearInterval(this.carLoop)
-        // this.stop = true
+        this.stop = true
       }
     }
   },
@@ -87,26 +89,31 @@ export default {
     // 'height'
   ],
   computed: {
+    // 寬度(像數)
     widthXp: {
       get () {
         return this.$store.getters['Racing/getWidthPx']
       }
     },
+    // 高度(像數)
     heightXp: {
       get () {
         return this.$store.getters['Racing/getHeightPx']
       }
     },
+    // 寬度
     width: {
       get () {
         return this.$store.getters['Racing/getWidth']
       }
     },
+    // 高度
     height: {
       get () {
         return this.$store.getters['Racing/getHeight']
       }
     },
+    // 速度
     speed: {
       get () {
         return this.$store.getters['Racing/getSpeed']
@@ -115,6 +122,7 @@ export default {
         this.$store.commit('Racing/setSpeed', val)
       }
     },
+    // 停止
     stop: {
       get () {
         return this.$store.getters['Racing/getStop']

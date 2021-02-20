@@ -14,9 +14,11 @@ export default {
     // 高
     height: 0,
     // 速度
-    speed: 30,
+    speed: 40,
     // 距離
     distance: 10000,
+    // 順位
+    rank: 0,
     // 停止
     stop: false,
     debug: false
@@ -41,6 +43,9 @@ export default {
     },
     setDistance (state, val) {
       state.distance = val
+    },
+    setRank (state, val) {
+      state.rank = val
     },
     setStop (state, val) {
       state.stop = val
@@ -68,6 +73,9 @@ export default {
     },
     getDistance (state) {
       return state.distance
+    },
+    getRank (state) {
+      return state.rank
     },
     getStop (state) {
       return state.stop

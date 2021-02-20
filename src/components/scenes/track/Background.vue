@@ -14,7 +14,6 @@ export default {
       if (this.width !== 0) {
         // 型態轉換100px=>100，寬是取100px有單位
         // this.x = parseInt(this.width.replace('xp', ''))
-        // this.x = this.width
         this.carLoop = setInterval(this.drawing, this.speed)
       }
     },
@@ -42,8 +41,9 @@ export default {
       this.context.setLineDash([30, 5])
       for (let i = 1; i < 10; i++) {
         this.context.beginPath()
-        this.context.strokeStyle = 'rgb(255, 255, 255)'
-        this.context.lineWidth = 5
+        // this.context.strokeStyle = 'rgb(255, 255, 255)'
+        this.context.strokeStyle = '#c0c0c0'
+        this.context.lineWidth = 2
         this.context.moveTo(-50 + this.x, h * i)
         this.context.lineTo(this.width + this.x + 100, h * i)
         this.context.stroke()
@@ -55,6 +55,7 @@ export default {
       } else {
         this.x = 5
       }
+      this.distance -= this.x
     }
   },
   computed: {
@@ -81,9 +82,14 @@ export default {
     speed: {
       get () {
         return this.$store.getters['Racing/getSpeed']
+      }
+    },
+    distance: {
+      get () {
+        return this.$store.getters['Racing/getDistance']
       },
       set (val) {
-        this.$store.commit('Racing/setSpeed', val)
+        this.$store.commit('Racing/setDistance', val)
       }
     },
     stop: {
@@ -96,6 +102,11 @@ export default {
     }
   },
   watch: {
+    distance (newVal, oldVal) {
+      if (newVal <= 0) {
+        this.stop = true
+      }
+    },
     stop (newVal, oldVal) {
       if (newVal === true) {
         clearInterval(this.carLoop)
@@ -106,13 +117,14 @@ export default {
     return {
       // 運作狀態
       isRunning: false,
-      // width: 800,
-      // height: 600,
       // 畫布
       canvas: this.$refs.canvas,
       context: null,
+      // 畫筆位置
       x: 0,
       y: 0,
+      // 迴圈
+      carLoop: null,
       config: {}
     }
   },
@@ -127,7 +139,9 @@ export default {
   updated () {
     this.ready()
   },
-  beforeDestroy () {},
+  beforeDestroy () {
+    clearInterval(this.carLoop)
+  },
   destroyed () {}
 }
 </script>

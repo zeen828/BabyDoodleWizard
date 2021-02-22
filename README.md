@@ -1,19 +1,11 @@
 # 小朋友畫的精靈
 
-st=>start: 註冊印象筆記
-
-e=>end: 您可以使用markdown
-
-op1=>operation: 登入印象筆記
-
-op2=>operation: 購買並登入馬克飛象
-
-cond=>condition: 是否已經購買並登入了馬克飛象?
-
-
-st->op1->cond
-cond(yes)->e
-cond(no)->op2->e
+```flow
+s=start:開始
+e=end:結束
+o=operation:操作項
+s-o-e
+```
 
 ## 企劃書修改紀錄
 | 日期 | 修改人 | 對應版本 | 修訂內容 |

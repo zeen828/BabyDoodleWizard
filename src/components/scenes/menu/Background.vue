@@ -7,6 +7,7 @@ export default {
   name: 'scenesMenuBackground',
   methods: {
     ready () {
+      console.log('場景-首頁目錄-背景')
       // 畫布宣告
       this.initCanvas()
       // 繪圖
@@ -79,7 +80,9 @@ export default {
     this.ready()
   },
   beforeUpdate () {},
-  updated () {},
+  updated () {
+    this.ready()
+  },
   beforeDestroy () {},
   destroyed () {}
 }

@@ -1,26 +1,30 @@
 <template>
   <div class="menu">
     <div class="canvas-wrapper">
-      <ScenesMenu :if="scenes" />
+      <Background/>
+      <Option/>
     </div>
+    <ControlButton/>
   </div>
 </template>
 
 <script>
-import ScenesMenu from '@/components/scenes/menu/Index.vue'
+import Background from '@/components/scenes/menu/Background.vue'
+import Option from '@/components/scenes/menu/Option.vue'
+import ControlButton from '@/components/control/Button.vue'
 export default {
   name: 'Game',
   components: {
-    ScenesMenu
+    Background,
+    Option,
+    ControlButton
   },
   methods: {
     ready () {
     }
   },
   data () {
-    return {
-      scenes: true
-    }
+    return {}
   },
   beforeCreate () {},
   created () {
@@ -47,23 +51,8 @@ export default {
 .canvas {
   width: 100%;
   height: 100%;
-}
-#scenesMenuBackground {
-  // background-color: #058;
   top: 0;
   left: 0;
-}
-#elvesMonkey {
-  // background-color: #058;
-  top: 0;
-  left: 0;
-}
-#canvasApple {
-  // background-color: red;
-  top: 0;
-  left: 0;
-}
-.canvas {
   position: absolute;
 }
 </style>

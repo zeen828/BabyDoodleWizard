@@ -13,7 +13,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   // 用來資料共享資料儲存
   state: {
+    // 語系
     lang: null,
+    // 流程
+    // 控制器
     button: {
       Up: false,
       Down: false,

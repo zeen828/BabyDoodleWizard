@@ -33,29 +33,73 @@ export default {
     ready () {
       console.log('Game.vue > ready()')
     },
-    previous: function (e) {
+    // 控制
+    control: function (e) {
       // check key code
       // console.log(e)
+      console.log('按下')
       switch (e.key) {
         case 'ArrowUp':
           console.log('上')
+          this.$store.commit('setUp', true)
           break
         case 'ArrowDown':
           console.log('下')
+          this.$store.commit('setDown', true)
           break
         case 'ArrowLeft':
           console.log('左')
+          this.$store.commit('setLeft', true)
           break
         case 'ArrowRight':
           console.log('右')
+          this.$store.commit('setRight', true)
           break
         case 'z':
         case 'Z':
           console.log('紅')
+          this.$store.commit('setZ', true)
           break
         case 'm':
         case 'M':
           console.log('藍')
+          this.$store.commit('setM', true)
+          break
+        default:
+          break
+      }
+    },
+    // 控制清除
+    controlClear: function (e) {
+      // check key code
+      // console.log(e)
+      console.log('放開')
+      switch (e.key) {
+        case 'ArrowUp':
+          console.log('上')
+          this.$store.commit('setUp', false)
+          break
+        case 'ArrowDown':
+          console.log('下')
+          this.$store.commit('setDown', false)
+          break
+        case 'ArrowLeft':
+          console.log('左')
+          this.$store.commit('setLeft', false)
+          break
+        case 'ArrowRight':
+          console.log('右')
+          this.$store.commit('setRight', false)
+          break
+        case 'z':
+        case 'Z':
+          console.log('紅')
+          this.$store.commit('setZ', false)
+          break
+        case 'm':
+        case 'M':
+          console.log('藍')
+          this.$store.commit('setM', false)
           break
         default:
           break
@@ -78,7 +122,8 @@ export default {
   beforeCreate () {},
   created () {
     // 建立事件
-    window.addEventListener('keyup', this.previous, false)
+    window.addEventListener('keydown', this.control, false)
+    window.addEventListener('keyup', this.controlClear, false)
   },
   beforeMount () {},
   mounted () {
@@ -89,7 +134,8 @@ export default {
   updated () {},
   beforeDestroy () {
     // 清除事件
-    window.removeEventListener('keyup', this.previous, false)
+    window.removeEventListener('keydown', this.control, false)
+    window.removeEventListener('keyup', this.controlClear, false)
   },
   destroyed () {}
 }

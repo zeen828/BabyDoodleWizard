@@ -1,13 +1,18 @@
 <template>
-  <Background/>
+  <div>
+    <Background />
+    <Option />
+  </div>
 </template>
 
 <script>
 import Background from '@/components/scenes/menu/Background.vue'
+import Option from '@/components/scenes/menu/Option.vue'
 export default {
   name: 'scenesMenu',
   components: {
-    Background
+    Background,
+    Option
   },
   methods: {
     ready () {
@@ -27,7 +32,9 @@ export default {
     this.ready()
   },
   beforeUpdate () {},
-  updated () {},
+  updated () {
+    this.ready()
+  },
   beforeDestroy () {},
   destroyed () {}
 }

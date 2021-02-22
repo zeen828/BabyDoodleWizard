@@ -2,16 +2,16 @@
   <div class="car">
     <div class="canvas-wrapper" ref="stage">
       <ScenesCar />
-      <RacingCar :no="1" :st="10" :colour="'#FF9797'" :speed="10 + 3 * 1" :width="width" :height="height" />
-      <RacingCar :no="2" :st="7" :colour="'#66B3FF'" :speed="10 + 3 * 2" :width="width" :height="height" />
-      <RacingCar :no="3" :st="6" :colour="'#7AFEC6'" :speed="10 + 3 * 3" :width="width" :height="height" />
-      <RacingCar :no="4" :st="3" :colour="'#FF9224'" :speed="10 + 3 * 4" :width="width" :height="height" />
-      <RacingCar :no="5" :st="2" :colour="'#A6A6D2'" :speed="10 + 3 * 5" :width="width" :height="height" />
-      <RacingCar :no="6" :st="1" :colour="'#AE57A4'" :speed="10 + 3 * 6" :width="width" :height="height" />
-      <RacingCar :no="7" :st="4" :colour="'#FFFF37'" :speed="10 + 3 * 7" :width="width" :height="height" />
-      <RacingCar :no="8" :st="5" :colour="'#B87070'" :speed="10 + 3 * 8" :width="width" :height="height" />
-      <RacingCar :no="9" :st="8" :colour="'#00ff00'" :speed="10 + 3 * 9" :width="width" :height="height" />
-      <RacingCar :no="10" :st="9" :colour="'#0000ff'" :speed="10 + 3 * 10" :width="width" :height="height" />
+      <RacingCar :no="1" :st="9" :colour="'#FF9797'" :speed="10 + 3 * 1" :width="width" :height="height" />
+      <RacingCar :no="2" :st="4" :colour="'#66B3FF'" :speed="10 + 3 * 2" :width="width" :height="height" />
+      <RacingCar :no="3" :st="2" :colour="'#7AFEC6'" :speed="10 + 3 * 3" :width="width" :height="height" />
+      <RacingCar :no="4" :st="5" :colour="'#FF9224'" :speed="10 + 3 * 4" :width="width" :height="height" />
+      <RacingCar :no="5" :st="8" :colour="'#A6A6D2'" :speed="10 + 3 * 5" :width="width" :height="height" />
+      <RacingCar :no="6" :st="10" :colour="'#AE57A4'" :speed="10 + 3 * 6" :width="width" :height="height" />
+      <RacingCar :no="7" :st="6" :colour="'#FFFF37'" :speed="10 + 3 * 7" :width="width" :height="height" />
+      <RacingCar :no="8" :st="1" :colour="'#B87070'" :speed="10 + 3 * 8" :width="width" :height="height" />
+      <RacingCar :no="9" :st="3" :colour="'#00ff00'" :speed="10 + 3 * 9" :width="width" :height="height" />
+      <RacingCar :no="10" :st="7" :colour="'#0000ff'" :speed="10 + 3 * 10" :width="width" :height="height" />
     </div>
   </div>
 </template>

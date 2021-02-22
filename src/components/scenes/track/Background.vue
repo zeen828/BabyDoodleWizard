@@ -14,8 +14,9 @@ export default {
       if (this.width !== 0) {
         // 型態轉換100px=>100，寬是取100px有單位
         // this.x = parseInt(this.width.replace('xp', ''))
-        this.carLoop = setInterval(this.drawing, this.speed)
+        this.myLoop = setInterval(this.drawing, this.speed)
       }
+      // this.drawingEnd()
     },
     // 畫布宣告
     initCanvas () {
@@ -48,6 +49,7 @@ export default {
         this.context.lineTo(this.width + this.x + 100, h * i)
         this.context.stroke()
       }
+      // 移動視覺
       if (this.x === 5) {
         this.x = 15
       } else if (this.x === 15) {
@@ -56,6 +58,37 @@ export default {
         this.x = 5
       }
       this.distance -= this.x
+    },
+    drawingEnd () {
+      // this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+      // 終點線
+      let endX = 300// 終點繪圖起點X座標
+      let endY = 0// 終點繪圖起點Y座標
+      const endS = 20// 相差間距
+      const endCount = this.height / endS// 間距要執行次數
+      this.context.fillStyle = '#c0c0c0'
+      this.context.beginPath()
+      this.context.moveTo(endX, 0)
+      for (let j = 1; j <= endCount; j++) {
+        endY = j * endS
+        this.context.lineTo(endX, endY)
+        if (endX === 300) {
+          endX += endS * 2
+        } else {
+          endX -= endS * 2
+        }
+        this.context.lineTo(endX, endY)
+      }
+      if (endX === 300) {
+        this.context.lineTo(endX + endS, endY)
+      } else {
+        this.context.lineTo(endX - endS, endY)
+      }
+      this.context.lineTo(endX + endS, 0)
+      this.context.lineTo(endX, 0)
+      this.context.closePath()
+      this.context.fill()
+      // this.context.stroke()
     }
   },
   computed: {
@@ -109,7 +142,8 @@ export default {
     },
     stop (newVal, oldVal) {
       if (newVal === true) {
-        clearInterval(this.carLoop)
+        clearInterval(this.myLoop)
+        this.drawingEnd()
       }
     }
   },
@@ -124,7 +158,7 @@ export default {
       x: 0,
       y: 0,
       // 迴圈
-      carLoop: null,
+      myLoop: null,
       config: {}
     }
   },
@@ -140,7 +174,7 @@ export default {
     this.ready()
   },
   beforeDestroy () {
-    clearInterval(this.carLoop)
+    clearInterval(this.myLoop)
   },
   destroyed () {}
 }

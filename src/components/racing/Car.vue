@@ -18,7 +18,7 @@ export default {
         // 型態轉換100px=>100，寬是取100px有單位
         // this.x = parseInt(this.width.replace('xp', ''))
         this.x = this.width
-        this.carLoop = setInterval(this.drawing, this.speed)
+        this.myLoop = setInterval(this.drawing, this.speed)
       }
     },
     // 畫布宣告
@@ -37,7 +37,7 @@ export default {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
       const img = new Image()
       img.src = require('@/assets/images/car/car' + this.no + '.png')
-      this.context.drawImage(img, this.x, this.y, 80, 30)
+      this.context.drawImage(img, this.x, this.y, 90, 30)
       // 定位截圖
       // x : 11, 94, 175
       // y : 13, 45, 83, 118, 152
@@ -141,14 +141,18 @@ export default {
       // 衝終點
       if (this.endStatus === true) {
         // 倒退到他的排名位置
-        const xxx = wt * [1.5 + (0.2 * this.st)]
+        const xxx = wt * [0.5 + (0.2 * this.st)]
+        if (this.x >= xxx) {
+          this.x -= 10
+        }
         if (this.x <= xxx) {
           this.x += 10
         }
+        console.log('車子', this.no, this.x, this.y, '目標', xxx)
       }
       if (this.x <= 20) {
         // 停止迴圈
-        clearInterval(this.carLoop)
+        clearInterval(this.myLoop)
         this.stop = true
       }
     },
@@ -188,13 +192,14 @@ export default {
       // 車號
       this.context.font = '12px serif'
       this.context.strokeText(this.no, this.x + 40, this.y + 15)
+      console.log('車子', this.no, this.x, this.y)
       // 移動
       if (this.x > 10) {
         this.x -= 10
       } else {
         console.log(this.x)
         // 停止迴圈
-        clearInterval(this.carLoop)
+        clearInterval(this.myLoop)
         this.stop = true
       }
     }
@@ -274,7 +279,7 @@ export default {
     },
     stop (newVal, oldVal) {
       if (newVal === true) {
-        clearInterval(this.carLoop)
+        clearInterval(this.myLoop)
       }
     }
   },
@@ -285,6 +290,9 @@ export default {
       // 汽車圖
       // 宣告引入
       // imgCar1: imgCar1,
+      // 顯示畫布
+      canvasView: this.$refs.canvas,
+      contextView: null,
       // 畫布
       canvas: this.$refs.canvas,
       context: null,
@@ -292,7 +300,7 @@ export default {
       x: 1000,
       y: 10,
       // 迴圈
-      carLoop: null,
+      myLoop: null,
       // 較勁狀態
       competeStatus: false,
       // 較勁倒數
@@ -316,7 +324,7 @@ export default {
     this.ready()
   },
   beforeDestroy () {
-    clearInterval(this.carLoop)
+    clearInterval(this.myLoop)
   },
   destroyed () {}
 }

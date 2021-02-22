@@ -10,7 +10,7 @@
 <summary>展开查看</summary>
 <pre><code>
 
-├──簡介{#簡介}
+├──[簡述](#簡述)
 ├──遊戲概念
 ├──預期目標
 ├──
@@ -18,52 +18,30 @@
 </code></pre>
 </details>
 
-***
 ---
 
-
-## 簡介{#簡介}
+## 簡述
 類型：跟神奇寶貝gaole一樣的玩法，收集小朋友畫怪物
 平台：Web網頁式
 遊玩人數：1~2
 客群：玩過gaole的玩家(全年齡)
 獲利模式：廣告跟贊助
 
+---
+
 ## 遊戲概念
 透過時下流行的寶可夢gaole玩法，將精靈球替換成其他東西，精靈則收集小朋友畫的怪物畫，遊戲玩法大致一樣當作一個前端的練習跟風一波蹭流量。
+
+---
 
 ## 預期目標
 可以自行上傳小朋友畫像建立精靈，後期如有可愛熱門的可以發行周邊販售紀念或贊助贈紀念品。
 
+---
+
 ## 流程
-st=>start: 註冊印象筆記
-e=>end: 您可以使用markdown
-op1=>operation: 登入印象筆記
-op2=>operation: 購買並登入馬克飛象
-cond=>condition: 是否已經購買並登入了馬克飛象?
 
-st->op1->cond
-cond(yes)->e
-cond(no)->op2->e
-
-<details>
-<summary>展开查看</summary>
-<pre><code>
-
-   ```mermaid
-    flowchat
-    st=>start: 開始
-    e=>end: 結束
-    op=>operation: 操作
-    sub1=>subroutine: 子程式
-    cond=>condition: Yes or No?
-    io=>inputoutput: 輸入/輸出
-    st->op->cond
-    cond(yes)->io->e
-    cond(no)->sub1(right)->op
-   ```
-</code></pre>
-</details>
+---
 
 ## 規劃畫面
 <details>

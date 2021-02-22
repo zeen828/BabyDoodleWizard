@@ -5,6 +5,18 @@ export default {
   namespaced: true,
   // 用來資料共享資料儲存
   state: {
+    // car: {
+    //   car1: { no: 1, images: require('@/assets/images/car/car1.png') },
+    //   car2: { no: 2, images: require('@/assets/images/car/car2.png') },
+    //   car3: { no: 3, images: require('@/assets/images/car/car3.png') },
+    //   car4: { no: 4, images: require('@/assets/images/car/car4.png') },
+    //   car5: { no: 5, images: require('@/assets/images/car/car5.png') },
+    //   car6: { no: 6, images: require('@/assets/images/car/car6.png') },
+    //   car7: { no: 7, images: require('@/assets/images/car/car7.png') },
+    //   car8: { no: 8, images: require('@/assets/images/car/car8.png') },
+    //   car9: { no: 9, images: require('@/assets/images/car/car9.png') },
+    //   car10: { no: 10, images: require('@/assets/images/car/car10.png') }
+    // },
     // 寬(像數)
     widthPx: '0px',
     // 高(像數)
@@ -26,6 +38,9 @@ export default {
   // 用來註冊改變資料狀態
   // this.$store.commit('mutations function name')
   mutations: {
+    setCar (state, val) {
+      state.car = val
+    },
     setWidthPx (state, val) {
       state.widthPx = val
     },
@@ -56,6 +71,9 @@ export default {
   },
   // 用來對共享資料進行過濾操作
   getters: {
+    getCar (state) {
+      return state.car
+    },
     getWidthPx (state) {
       return state.widthPx
     },

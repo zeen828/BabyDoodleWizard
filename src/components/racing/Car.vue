@@ -3,16 +3,8 @@
 </template>
 
 <script>
-import imgCar1 from '@/assets/images/car/car1.png'
-import imgCar2 from '@/assets/images/car/car2.png'
-import imgCar3 from '@/assets/images/car/car3.png'
-import imgCar4 from '@/assets/images/car/car4.png'
-import imgCar5 from '@/assets/images/car/car5.png'
-import imgCar6 from '@/assets/images/car/car6.png'
-import imgCar7 from '@/assets/images/car/car7.png'
-import imgCar8 from '@/assets/images/car/car8.png'
-import imgCar9 from '@/assets/images/car/car9.png'
-import imgCar10 from '@/assets/images/car/car10.png'
+// 宣告引入
+// import imgCar1 from '@/assets/images/car/car1.png'
 export default {
   name: 'canvasRacingCar',
   methods: {
@@ -43,54 +35,60 @@ export default {
     },
     drawing () {
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-      var img = new Image()
+      const img = new Image()
+      img.src = require('@/assets/images/car/car' + this.no + '.png')
+      this.context.drawImage(img, this.x, this.y, 80, 30)
+      // 定位截圖
       // x : 11, 94, 175
       // y : 13, 45, 83, 118, 152
-      switch (this.no) {
-        case 1:
-          img.src = this.imgCar1
-          // this.context.drawImage(img, 11, 13, 80, 35, this.x, this.y, 80, 30)
-          // img.src = 'https://share.jonbotech.com/racing/video/racing_car/images/animate/car1.png'
-          // img.src = 'https://share.jonbotech.com/racing/video/racing_car/images/rezult/winner1.png'
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 2:
-          img.src = this.imgCar2
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 3:
-          img.src = this.imgCar3
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 4:
-          img.src = this.imgCar4
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 5:
-          img.src = this.imgCar5
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 6:
-          img.src = this.imgCar6
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 7:
-          img.src = this.imgCar7
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 8:
-          img.src = this.imgCar8
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 9:
-          img.src = this.imgCar9
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-        case 10:
-          img.src = this.imgCar10
-          this.context.drawImage(img, this.x, this.y, 80, 30)
-          break
-      }
+      // switch (this.no) {
+      //   case 1:
+      //     // 宣告引入
+      //     // img.src = this.imgCar1
+      //     // 引用網址
+      //     // img.src = 'https://share.jonbotech.com/racing/video/racing_car/images/animate/car1.png'
+      //     // 定位截圖
+      //     // this.context.drawImage(img, 11, 13, 80, 35, this.x, this.y, 80, 30)
+      //     img.src = require('@/assets/images/car/car1.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 2:
+      //     img.src = require('@/assets/images/car/car2.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 3:
+      //     img.src = require('@/assets/images/car/car3.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 4:
+      //     img.src = require('@/assets/images/car/car4.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 5:
+      //     img.src = require('@/assets/images/car/car5.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 6:
+      //     img.src = require('@/assets/images/car/car6.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 7:
+      //     img.src = require('@/assets/images/car/car7.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 8:
+      //     img.src = require('@/assets/images/car/car8.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 9:
+      //     img.src = require('@/assets/images/car/car9.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      //   case 10:
+      //     img.src = require('@/assets/images/car/car10.png')
+      //     this.context.drawImage(img, this.x, this.y, 80, 30)
+      //     break
+      // }
       // 車號
       this.context.font = '14px serif'
       this.context.strokeText(this.no, this.x + 30, this.y + 20)
@@ -142,33 +140,10 @@ export default {
       }
       // 衝終點
       if (this.endStatus === true) {
-        if (this.distance <= 2000) {
-          if (this.st <= this.rank) {
-            this.x -= 10
-          }
-        } else {
-          switch (this.competeTypr) {
-            case 1:
-              if (this.x <= wt * 3.5) {
-                this.x += 10
-              }
-              break
-            case 2:
-              if (this.x <= wt * 3.5) {
-                this.x += 15
-              }
-              break
-            case 3:
-              if (this.x <= wt * 3.5) {
-                this.x += 5
-              }
-              break
-            case 4:
-              if (this.x <= wt * 3.5) {
-                this.x += 5
-              }
-              break
-          }
+        // 倒退到他的排名位置
+        const xxx = wt * [1.5 + (0.2 * this.st)]
+        if (this.x <= xxx) {
+          this.x += 10
         }
       }
       if (this.x <= 20) {
@@ -231,6 +206,11 @@ export default {
     'st'
   ],
   computed: {
+    car: {
+      get () {
+        return this.$store.getters['Racing/getCar']
+      }
+    },
     // 寬度(像數)
     widthXp: {
       get () {
@@ -303,16 +283,8 @@ export default {
       // 運作狀態
       isRunning: false,
       // 汽車圖
-      imgCar1: imgCar1,
-      imgCar2: imgCar2,
-      imgCar3: imgCar3,
-      imgCar4: imgCar4,
-      imgCar5: imgCar5,
-      imgCar6: imgCar6,
-      imgCar7: imgCar7,
-      imgCar8: imgCar8,
-      imgCar9: imgCar9,
-      imgCar10: imgCar10,
+      // 宣告引入
+      // imgCar1: imgCar1,
       // 畫布
       canvas: this.$refs.canvas,
       context: null,

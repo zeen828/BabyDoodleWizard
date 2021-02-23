@@ -1,7 +1,8 @@
 <template>
   <div class="car">
     <div class="canvas-wrapper" ref="stage">
-      <ScenesCar />
+      <Background />
+      <End />
       <RacingCar :no="1" :st="9" :colour="'#FF9797'" :speed="10 + 3 * 1" :width="width" :height="height" />
       <RacingCar :no="2" :st="4" :colour="'#66B3FF'" :speed="10 + 3 * 2" :width="width" :height="height" />
       <RacingCar :no="3" :st="2" :colour="'#7AFEC6'" :speed="10 + 3 * 3" :width="width" :height="height" />
@@ -17,12 +18,14 @@
 </template>
 
 <script>
-import ScenesCar from '@/components/scenes/track/Index.vue'
+import Background from '@/components/scenes/track/Background.vue'
+import End from '@/components/scenes/track/End.vue'
 import RacingCar from '@/components/racing/Car.vue'
 export default {
   name: 'Car',
   components: {
-    ScenesCar,
+    Background,
+    End,
     RacingCar
   },
   methods: {
@@ -72,18 +75,8 @@ export default {
 .canvas {
   width: 100%;
   height: 100%;
-}
-#scenesTrackBackground {
-  // background-color: #058;
   top: 0;
   left: 0;
-}
-.canvasRacingCar {
-  // background-color: #058;
-  top: 0;
-  left: 0;
-}
-.canvas {
   position: absolute;
 }
 </style>

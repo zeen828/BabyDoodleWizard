@@ -143,7 +143,7 @@ export default {
     stop (newVal, oldVal) {
       if (newVal === true) {
         clearInterval(this.myLoop)
-        this.drawingEnd()
+        // this.drawingEnd()
       }
     }
   },

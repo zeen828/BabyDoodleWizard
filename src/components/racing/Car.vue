@@ -272,11 +272,13 @@ export default {
     }
   },
   watch: {
+    // 監聽距離準備衝終點
     distance (newVal, oldVal) {
-      if (newVal <= 3000) {
+      if (newVal <= 1200) {
         this.endStatus = true
       }
     },
+    // 監聽停止狀態停止所有動畫
     stop (newVal, oldVal) {
       if (newVal === true) {
         clearInterval(this.myLoop)

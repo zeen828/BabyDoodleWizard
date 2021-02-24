@@ -16,5 +16,11 @@
     "page": {
         "index": "這是{name}頁面."
     },
+    "racing": {
+        "ranking": "排名",
+        "start": "開始",
+        "reset": "重新",
+        "stop": "暫停"
+    },
     "test": "測試"
 }

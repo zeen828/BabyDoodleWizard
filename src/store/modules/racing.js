@@ -5,18 +5,25 @@ export default {
   namespaced: true,
   // 用來資料共享資料儲存
   state: {
-    // car: {
-    //   car1: { no: 1, images: require('@/assets/images/car/car1.png') },
-    //   car2: { no: 2, images: require('@/assets/images/car/car2.png') },
-    //   car3: { no: 3, images: require('@/assets/images/car/car3.png') },
-    //   car4: { no: 4, images: require('@/assets/images/car/car4.png') },
-    //   car5: { no: 5, images: require('@/assets/images/car/car5.png') },
-    //   car6: { no: 6, images: require('@/assets/images/car/car6.png') },
-    //   car7: { no: 7, images: require('@/assets/images/car/car7.png') },
-    //   car8: { no: 8, images: require('@/assets/images/car/car8.png') },
-    //   car9: { no: 9, images: require('@/assets/images/car/car9.png') },
-    //   car10: { no: 10, images: require('@/assets/images/car/car10.png') }
-    // },
+    // 開始
+    start: false,
+    // 重置
+    reset: false,
+    // 停止
+    stop: false,
+    // 汽車
+    car: {
+      car1: { st: 1, images: require('@/assets/images/car/car1.png') },
+      car2: { st: 2, images: require('@/assets/images/car/car2.png') },
+      car3: { st: 3, images: require('@/assets/images/car/car3.png') },
+      car4: { st: 4, images: require('@/assets/images/car/car4.png') },
+      car5: { st: 5, images: require('@/assets/images/car/car5.png') },
+      car6: { st: 6, images: require('@/assets/images/car/car6.png') },
+      car7: { st: 7, images: require('@/assets/images/car/car7.png') },
+      car8: { st: 8, images: require('@/assets/images/car/car8.png') },
+      car9: { st: 9, images: require('@/assets/images/car/car9.png') },
+      car10: { st: 10, images: require('@/assets/images/car/car10.png') }
+    },
     // 寬(像數)
     widthPx: '0px',
     // 高(像數)
@@ -29,17 +36,52 @@ export default {
     speed: 40,
     // 距離
     distance: 10000,
-    // 順位
-    rank: 0,
-    // 停止
-    stop: false,
     debug: false
   },
   // 用來註冊改變資料狀態
   // this.$store.commit('mutations function name')
   mutations: {
+    setStart (state, val) {
+      state.start = val
+    },
+    setReset (state, val) {
+      state.reset = val
+    },
+    setStop (state, val) {
+      state.stop = val
+    },
     setCar (state, val) {
       state.car = val
+    },
+    setCar1St (state, val) {
+      state.car.car1.st = val
+    },
+    setCar2St (state, val) {
+      state.car.car2.st = val
+    },
+    setCar3St (state, val) {
+      state.car.car3.st = val
+    },
+    setCar4St (state, val) {
+      state.car.car4.st = val
+    },
+    setCar5St (state, val) {
+      state.car.car5.st = val
+    },
+    setCar6St (state, val) {
+      state.car.car6.st = val
+    },
+    setCar7St (state, val) {
+      state.car.car7.st = val
+    },
+    setCar8St (state, val) {
+      state.car.car8.st = val
+    },
+    setCar9St (state, val) {
+      state.car.car9.st = val
+    },
+    setCar10St (state, val) {
+      state.car.car10.st = val
     },
     setWidthPx (state, val) {
       state.widthPx = val
@@ -59,18 +101,21 @@ export default {
     setDistance (state, val) {
       state.distance = val
     },
-    setRank (state, val) {
-      state.rank = val
-    },
-    setStop (state, val) {
-      state.stop = val
-    },
     setDebug (state, val) {
       state.debug = val
     }
   },
   // 用來對共享資料進行過濾操作
   getters: {
+    getStart (state, val) {
+      return state.start
+    },
+    getReset (state, val) {
+      return state.reset
+    },
+    getStop (state) {
+      return state.stop
+    },
     getCar (state) {
       return state.car
     },
@@ -92,12 +137,6 @@ export default {
     getDistance (state) {
       return state.distance
     },
-    getRank (state) {
-      return state.rank
-    },
-    getStop (state) {
-      return state.stop
-    },
     getDebug (state) {
       return state.debug
     }
@@ -117,6 +156,28 @@ export default {
       // 寬高轉換成數值，xp去掉改型態
       context.commit('setWidth', parseInt(width.replace('xp', '')))
       context.commit('setHeight', parseInt(height.replace('xp', '')))
+    },
+    // 畫布開始
+    setCanvasStart (context) {
+      if (context.state.distance >= 0) {
+        context.commit('setStart', true)
+        context.commit('setReset', false)
+        context.commit('setStop', false)
+      }
+    },
+    // 畫布重置
+    setCanvasReset (context) {
+      context.commit('setStart', false)
+      context.commit('setReset', true)
+      context.commit('setStop', false)
+      context.commit('setSpeed', 40)
+      context.commit('setDistance', 10000)
+    },
+    // 畫布停止
+    setCanvasStop (context) {
+      context.commit('setStart', false)
+      context.commit('setReset', false)
+      context.commit('setStop', true)
     }
   }
 }

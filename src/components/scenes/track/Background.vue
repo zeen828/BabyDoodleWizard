@@ -7,91 +7,92 @@ export default {
   name: 'scenesTrackBackground',
   methods: {
     ready () {
+      const that = this
       // 畫布宣告
-      this.initCanvas()
-      // 繪圖
-      // this.drawing()
-      if (this.width !== 0) {
-        // 型態轉換100px=>100，寬是取100px有單位
-        // this.x = parseInt(this.width.replace('xp', ''))
-        this.myLoop = setInterval(this.drawing, this.speed)
-      }
-      // this.drawingEnd()
+      that.initCanvas()
+      that.format()
     },
     // 畫布宣告
     initCanvas () {
+      const that = this
       // 定位目標DOM
-      this.canvas = document.getElementById('scenesTrackBackground')
+      that.canvas = document.getElementById('scenesTrackBackground')
       // 渲染
-      if (this.canvas.getContext) {
-        this.context = this.canvas.getContext('2d')
+      if (that.canvas.getContext) {
+        that.context = that.canvas.getContext('2d')
       } else {
         console.log('瀏覽器不支援畫布(canvas)')
         alert('瀏覽器不支援畫布(canvas)')
       }
     },
+    // 初始化
+    format () {
+      const that = this
+      that.context.clearRect(0, 0, that.canvas.width, that.canvas.height)
+      that.spacing = that.height / 10
+      that.x = 0
+      that.y = 0
+      clearInterval(that.myLoop)
+    },
+    // 播放動畫
+    player () {
+      const that = this
+      // 繪圖
+      // that.drawing()
+      if (that.width !== 0) {
+        that.myLoop = setInterval(that.drawing, that.speed)
+      }
+    },
     // 繪圖
     drawing () {
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+      const that = this
+      that.context.clearRect(0, 0, that.canvas.width, that.canvas.height)
       // 黑底
-      this.context.fillStyle = 'rgb(0, 0, 0)'
+      that.context.fillStyle = 'rgb(0, 0, 0)'
       // 設定一個填滿顏色的矩形(原點出發X橫向位置,原點出發Y垂直位置,寬,高)
-      this.context.fillRect(0, 0, this.width, this.height)
+      that.context.fillRect(0, 0, that.width, that.height)
       // 白虛線(迴圈9條)
-      const h = this.height / 10
-      this.context.setLineDash([30, 5])
+      const h = that.height / 10
+      that.context.setLineDash([30, 5])
       for (let i = 1; i < 10; i++) {
-        this.context.beginPath()
-        // this.context.strokeStyle = 'rgb(255, 255, 255)'
-        this.context.strokeStyle = '#c0c0c0'
-        this.context.lineWidth = 2
-        this.context.moveTo(-50 + this.x, h * i)
-        this.context.lineTo(this.width + this.x + 100, h * i)
-        this.context.stroke()
+        that.context.beginPath()
+        // that.context.strokeStyle = 'rgb(255, 255, 255)'
+        that.context.strokeStyle = '#c0c0c0'
+        that.context.lineWidth = 2
+        that.context.moveTo(-50 + that.x, h * i)
+        that.context.lineTo(that.width + that.x + 100, h * i)
+        that.context.stroke()
       }
       // 移動視覺
-      if (this.x === 5) {
-        this.x = 15
-      } else if (this.x === 15) {
-        this.x = 25
+      if (that.x === 5) {
+        that.x = 15
+      } else if (that.x === 15) {
+        that.x = 25
       } else {
-        this.x = 5
+        that.x = 5
       }
-      this.distance -= this.x
-    },
-    drawingEnd () {
-      // this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
-      // 終點線
-      let endX = 300// 終點繪圖起點X座標
-      let endY = 0// 終點繪圖起點Y座標
-      const endS = 20// 相差間距
-      const endCount = this.height / endS// 間距要執行次數
-      this.context.fillStyle = '#c0c0c0'
-      this.context.beginPath()
-      this.context.moveTo(endX, 0)
-      for (let j = 1; j <= endCount; j++) {
-        endY = j * endS
-        this.context.lineTo(endX, endY)
-        if (endX === 300) {
-          endX += endS * 2
-        } else {
-          endX -= endS * 2
-        }
-        this.context.lineTo(endX, endY)
-      }
-      if (endX === 300) {
-        this.context.lineTo(endX + endS, endY)
-      } else {
-        this.context.lineTo(endX - endS, endY)
-      }
-      this.context.lineTo(endX + endS, 0)
-      this.context.lineTo(endX, 0)
-      this.context.closePath()
-      this.context.fill()
-      // this.context.stroke()
+      that.distance -= that.x
     }
   },
   computed: {
+    start: {
+      get () {
+        return this.$store.getters['Racing/getStart']
+      }
+    },
+    reset: {
+      get () {
+        return this.$store.getters['Racing/getReset']
+      }
+    },
+    stop: {
+      get () {
+        return this.$store.getters['Racing/getStop']
+      },
+      set (val) {
+        this.$store.commit('Racing/setStop', val)
+      }
+    },
     widthXp: {
       get () {
         return this.$store.getters['Racing/getWidthPx']
@@ -124,39 +125,42 @@ export default {
       set (val) {
         this.$store.commit('Racing/setDistance', val)
       }
-    },
-    stop: {
-      get () {
-        return this.$store.getters['Racing/getStop']
-      },
-      set (val) {
-        this.$store.commit('Racing/setStop', val)
-      }
     }
   },
   watch: {
-    distance (newVal, oldVal) {
-      if (newVal <= 0) {
-        this.stop = true
+    start (newVal, oldVal) {
+      if (newVal === true) {
+        this.player()
+      }
+    },
+    reset (newVal, oldVal) {
+      if (newVal === true) {
+        clearInterval(this.myLoop)
+        this.format()
+        this.player()
       }
     },
     stop (newVal, oldVal) {
       if (newVal === true) {
         clearInterval(this.myLoop)
-        // this.drawingEnd()
+      }
+    },
+    distance (newVal, oldVal) {
+      if (newVal <= 0) {
+        this.stop = true
       }
     }
   },
   data () {
     return {
-      // 運作狀態
-      isRunning: false,
       // 畫布
       canvas: this.$refs.canvas,
       context: null,
       // 畫筆位置
       x: 0,
       y: 0,
+      // 間距
+      spacing: 0,
       // 迴圈
       myLoop: null,
       config: {}

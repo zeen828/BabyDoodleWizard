@@ -16,5 +16,11 @@
     "page": {
         "index": "This is an {name} page."
     },
+    "racing": {
+        "ranking": "Ranking",
+        "start": "Start",
+        "reset": "Reset",
+        "stop": "Stop"
+    },
     "test": "Test"
 }

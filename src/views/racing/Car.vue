@@ -53,53 +53,7 @@ export default {
     },
     setRanking () {
       const that = this
-      // const no = '01,02,03,04,05,06,07,08,09,10'
-      // 切字
-      const noArr = that.no.split(',')
-      noArr.forEach(function (item, index, array) {
-        console.log(item, index, array)
-        switch (item) {
-          case '1':
-          case '01':
-            that.$store.commit('Racing/setCar1St', index + 1)
-            break
-          case '2':
-          case '02':
-            that.$store.commit('Racing/setCar2St', index + 1)
-            break
-          case '3':
-          case '03':
-            that.$store.commit('Racing/setCar3St', index + 1)
-            break
-          case '4':
-          case '04':
-            that.$store.commit('Racing/setCar4St', index + 1)
-            break
-          case '5':
-          case '05':
-            that.$store.commit('Racing/setCar5St', index + 1)
-            break
-          case '6':
-          case '06':
-            that.$store.commit('Racing/setCar6St', index + 1)
-            break
-          case '7':
-          case '07':
-            that.$store.commit('Racing/setCar7St', index + 1)
-            break
-          case '8':
-          case '08':
-            that.$store.commit('Racing/setCar8St', index + 1)
-            break
-          case '9':
-          case '09':
-            that.$store.commit('Racing/setCar9St', index + 1)
-            break
-          case '10':
-            that.$store.commit('Racing/setCar10St', index + 1)
-            break
-        }
-      })
+      that.$store.dispatch('Racing/serDrawNo', that.no)
     },
     gameStart () {
       const that = this

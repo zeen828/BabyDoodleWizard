@@ -157,6 +157,54 @@ export default {
       context.commit('setWidth', parseInt(width.replace('xp', '')))
       context.commit('setHeight', parseInt(height.replace('xp', '')))
     },
+    // 設定開獎號碼(EX:1,2,3,4,5,6,7,8,9,10)
+    serDrawNo (context, noStr) {
+      const noArr = noStr.split(',')
+      noArr.forEach(function (item, index, array) {
+        // console.log(item, index, array)
+        switch (item) {
+          case '1':
+          case '01':
+            context.commit('setCar1St', index + 1)
+            break
+          case '2':
+          case '02':
+            context.commit('setCar2St', index + 1)
+            break
+          case '3':
+          case '03':
+            context.commit('setCar3St', index + 1)
+            break
+          case '4':
+          case '04':
+            context.commit('setCar4St', index + 1)
+            break
+          case '5':
+          case '05':
+            context.commit('setCar5St', index + 1)
+            break
+          case '6':
+          case '06':
+            context.commit('setCar6St', index + 1)
+            break
+          case '7':
+          case '07':
+            context.commit('setCar7St', index + 1)
+            break
+          case '8':
+          case '08':
+            context.commit('setCar8St', index + 1)
+            break
+          case '9':
+          case '09':
+            context.commit('setCar9St', index + 1)
+            break
+          case '10':
+            context.commit('setCar10St', index + 1)
+            break
+        }
+      })
+    },
     // 畫布開始
     setCanvasStart (context) {
       if (context.state.distance >= 0) {

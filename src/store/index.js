@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // module
+import pokemonGaole from './modules/pokemonGaole'
 import Elves from './modules/elves'
 import Capture from './modules/capture'
 import Props from './modules/props'
@@ -92,6 +93,7 @@ export default new Vuex.Store({
   },
   // store的子模組，為了開發大型專案，方便狀態管理而使用的
   modules: {
+    pokemonGaole,
     Elves,
     Capture,
     Props,

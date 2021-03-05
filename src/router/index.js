@@ -7,27 +7,32 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: () => import('@/views/Home.vue')
   },
   {
     path: '/menu',
     name: 'Menu',
-    component: () => import('../views/Menu.vue')
+    component: () => import('@/views/Menu.vue')
   },
   {
     path: '/game',
     name: 'Game',
-    component: () => import('../views/Game.vue')
+    component: () => import('@/views/Game.vue')
+  },
+  {
+    path: '/magic/playingcard',
+    name: 'PlayingCard',
+    component: () => import('@/views/magic/PlayingCard.vue')
   },
   {
     path: '/racing/car',
     name: 'Car',
-    component: () => import('../views/racing/Car.vue')
+    component: () => import('@/views/racing/Car.vue')
   },
   {
     path: '/tests',
     name: 'Tests',
-    component: () => import('../views/Tests.vue')
+    component: () => import('@/views/Tests.vue')
   }
 ]
 

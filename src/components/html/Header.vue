@@ -29,6 +29,7 @@ export default {
           { title: 'menu.home', path: '/' },
           { title: 'menu.menu', path: '/menu' },
           { title: 'menu.game', path: '/game' },
+          { title: 'menu.playingCard', path: '/magic/playingcard' },
           { title: 'menu.car', path: '/racing/car' },
           { title: 'test', path: '/tests' }
         ]
